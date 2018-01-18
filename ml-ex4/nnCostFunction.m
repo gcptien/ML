@@ -62,6 +62,25 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% Part 1
+% input layer
+a_1 = [ones(m, 1), X];
+
+% Hidden Layer
+z_2 = a_1 * Theta1';
+a_2 = [ones(m, 1),sigmoid(z_2)];
+
+% Output Layer
+z_3 = a_2 * Theta2';
+a_3 = sigmoid(z_3);
+h = a_3;
+
+% Cost Function
+for (i =1:num_labels)
+J = 1/m * (log(h(i))*(-y(i)) - log(1-h(i))*(1-y(i)));
+
+
+end;
 
 
 
