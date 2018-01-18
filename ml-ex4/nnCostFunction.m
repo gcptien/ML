@@ -63,6 +63,7 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 % Part 1
+y_matrix = eye(num_label)(y,:);
 % input layer
 a_1 = [ones(m, 1), X];
 
@@ -77,12 +78,10 @@ h = a_3;
 
 % Cost Function
 for (i =1:num_labels)
-J = 1/m * (log(h(i))*(-y(i)) - log(1-h(i))*(1-y(i)));
-
-
+J = 1/m * (log(h(i)).*(-y(i)) - log(1-h(i)).*(1-y(i)));
 end;
 
-
+%Theta1_grad = theta1_grad - 1/m * (h - y)
 
 
 
