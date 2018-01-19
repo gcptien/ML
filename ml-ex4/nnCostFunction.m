@@ -85,9 +85,19 @@ J = sum(sum(1/m * (log(h).*(-y_matrix) - log(1-h) .* (1-y_matrix))));
 %end;
 
 % Part 2
+Theta1_re = Theta1(:,2:(size(Theta1,2)));
+Theta2_re = Theta2(:,2:(size(Theta2,2)));
 
+J_cost = lambda/2/m * (sum(sum((Theta1_re.*Theta1_re))) + sum(sum(Theta2_re.*Theta2_re)));
 
+J = J + J_cost;
 
+% Part 2 Backward Propagation
+
+d_3 = a_3 - y;
+d_2 = a_3 * Theta2_re.*sigmoidGradient(z_2);
+
+d_2 = d_2(2:end);
 
 
 
