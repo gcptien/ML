@@ -63,6 +63,7 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 % Part 1
+y_matrix = eye(num_labels)(y,:);
 % input layer
 a_1 = [ones(m, 1), X];
 
@@ -76,12 +77,14 @@ a_3 = sigmoid(z_3);
 h = a_3;
 
 % Cost Function
-for (i =1:num_labels)
-J = 1/m * (log(h(i))*(-y(i)) - log(1-h(i))*(1-y(i)));
+%for (i =1:num_labels)
+%J = J + 1/m * (log(h(i)).*(-y_matrix(i)) - log(1-h(i)).*(1-y_matrix(i)));
 
+J = sum(sum(1/m * (log(h).*(-y_matrix) - log(1-h) .* (1-y_matrix))));
 
-end;
+%end;
 
+% Part 2
 
 
 
