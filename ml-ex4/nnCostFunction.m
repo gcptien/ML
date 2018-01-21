@@ -94,12 +94,16 @@ J = J + J_cost;
 
 % Part 2 Backward Propagation
 
-d_3 = a_3 - y;
-d_2 = a_3 * Theta2_re.*sigmoidGradient(z_2);
+%for (t = 1:m)
+d_3 = h - y_matrix;
+%d_3(t) = a_3(t) - y(t);
+%d_2(t) = a_3(t) * Theta2_re(t).*sigmoidGradient(z_2(t));
+%d_2 = d_2(2:end);
 
-d_2 = d_2(2:end);
+%D_2(t) = D_2(t) + Theta_2
 
 
+%end;
 
 
 
