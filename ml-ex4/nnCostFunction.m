@@ -69,7 +69,7 @@ a_1 = [ones(m, 1), X];
 
 % Hidden Layer
 z_2 = a_1 * Theta1';
-a_2 = [ones(m, 1),sigmoid(z_2)];
+a_2 = [ones(size(z_2,1), 1), sigmoid(z_2)];
 
 % Output Layer
 z_3 = a_2 * Theta2';
@@ -85,6 +85,7 @@ J = sum(sum(1/m * (log(h).*(-y_matrix) - log(1-h) .* (1-y_matrix))));
 %end;
 
 % Part 2
+
 Theta1_re = Theta1(:,2:(size(Theta1,2)));
 Theta2_re = Theta2(:,2:(size(Theta2,2)));
 
@@ -94,22 +95,15 @@ J = J + J_cost;
 
 % Part 2 Backward Propagation
 
-d_3 = a_3 - y;
-d_2 = a_3 * Theta2_re.*sigmoidGradient(z_2);
+sig_3 = h - y_matrix;
+sig_2 = (sig_3* Theta2_re) .*sigmoidGradient(z_2);
 
-d_2 = d_2(2:end);
-
-
-
+D_1 = sig_2' * a_1;
+D_2 = sig_3' * a_2;
 
 
-
-
-
-
-
-
-
+Theta1_grad = D_1./m;
+Theta2_grad = D_2./m;
 
 
 % -------------------------------------------------------------
