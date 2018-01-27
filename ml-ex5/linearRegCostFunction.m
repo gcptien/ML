@@ -21,12 +21,14 @@ grad = zeros(size(theta));
 
 
 
+h = X * theta;
 
+theta_re = [0; theta(2:end,:)];
+penalty  = lambda /2/m * theta_re' * theta_re;
 
+J = 1/2/m * (h-y)' * (h-y) + penalty;
 
-
-
-
+grad = 1/m * (X'* (h-y)) + lambda/m .* theta_re;
 
 
 
