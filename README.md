@@ -1,6 +1,6 @@
 # ML
 # Machine Learning
-This Repo includes all the Coursera projects I have done.
+This Repo includes all the Coursera courses I have completed.
 
 ## Subjects
 1. Machine Learning  
